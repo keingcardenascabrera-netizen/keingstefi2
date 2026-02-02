@@ -1,55 +1,287 @@
-
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HeartRise | Amor Propio y Sanación Espiritual</title>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoulRise | Amor Propio y Sanación Energética</title>
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Elegancia y Legibilidad -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'quartz': '#F7CAC9',
+                        'lilac': '#D6CADD',
+                        'sage': '#B2AC88',
+                        'gold': '#D4AF37',
+                        'beige': '#FCFAF8',
+                    },
+                    fontFamily: {
+                        serif: ['Cormorant Garamond', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'soft-fade': 'fadeIn 1.5s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-      body {
-        font-family: 'Montserrat', sans-serif;
-        background-color: #fcfaf8;
-        scroll-behavior: smooth;
-      }
-      h1, h2, h3, h4, .font-serif {
-        font-family: 'Cormorant Garamond', serif;
-      }
-      .bg-rose-quartz { background-color: #F7CAC9; }
-      .bg-soft-lilac { background-color: #D6CADD; }
-      .text-sage { color: #828a6e; }
-      .bg-sage { background-color: #B2AC88; }
-      .border-gold { border-color: #D4AF37; }
-      .text-gold { color: #C5A028; }
-      
-      /* Smooth transitions for hover effects */
-      .transition-all { transition: all 0.4s ease-in-out; }
-      
-      /* Soft shadows */
-      .soft-shadow {
-        box-shadow: 0 10px 30px -10px rgba(214, 202, 221, 0.3);
-      }
-      
-      /* Custom Gradient */
-      .spiritual-gradient {
-        background: linear-gradient(135deg, #fffcfb 0%, #f7cac933 50%, #d6cadd33 100%);
-      }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .bg-spiritual {
+            background: linear-gradient(135deg, #FCFAF8 0%, #F7CAC933 50%, #D6CADD33 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 10px 30px -10px rgba(214, 202, 221, 0.4);
+        }
+
+        .mobile-menu {
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(-100%);
+        }
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+        
+        /* Ocultar scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #FCFAF8; }
+        ::-webkit-scrollbar-thumb { background: #D6CADD; border-radius: 10px; }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
-  }
-}
-</script>
 </head>
-  <body>
-    <div id="root"></div>
-  </body>
-</html>
+<body class="bg-beige text-gray-800 font-sans">
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-white/70 backdrop-blur-md border-b border-quartz/20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="sparkles" class="text-gold w-6 h-6"></i>
+                <span class="text-2xl font-serif font-bold tracking-[0.2em] uppercase text-gray-900">SoulRise</span>
+            </div>
+            
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#inicio" class="text-[10px] uppercase tracking-widest font-medium hover:text-gold transition-colors">Inicio</a>
+                <a href="#sobre" class="text-[10px] uppercase tracking-widest font-medium hover:text-gold transition-colors">Sobre Mí</a>
+                <a href="#servicios" class="text-[10px] uppercase tracking-widest font-medium hover:text-gold transition-colors">Sanación</a>
+                <a href="#tienda" class="text-[10px] uppercase tracking-widest font-medium hover:text-gold transition-colors">Tienda</a>
+                <button class="relative hover:text-gold transition-colors">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-quartz text-[8px] text-white w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+            </div>
+
+            <!-- Botón Móvil -->
+            <div class="md:hidden flex items-center gap-4">
+                <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                <button id="menu-toggle" class="p-2 focus:outline-none">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Menú Móvil -->
+        <div id="mobile-nav" class="mobile-menu absolute top-20 left-0 w-full bg-white shadow-xl md:hidden z-40 overflow-hidden flex flex-col p-8 gap-6 text-center border-b border-quartz/20">
+            <a href="#inicio" class="text-lg font-serif">Inicio</a>
+            <a href="#sobre" class="text-lg font-serif">Sobre Mí</a>
+            <a href="#servicios" class="text-lg font-serif">Servicios</a>
+            <a href="#tienda" class="text-lg font-serif">Tienda</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-spiritual">
+        <!-- Elementos Decorativos -->
+        <div class="absolute top-1/4 -right-20 w-80 h-80 bg-quartz/20 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-1/4 -left-20 w-64 h-64 bg-lilac/20 rounded-full blur-3xl animate-float" style="animation-delay: 2s"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="animate-soft-fade">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-px bg-gold"></div>
+                    <span class="text-xs uppercase tracking-[0.4em] text-gray-400 font-bold">Amarsé es Poder</span>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-serif leading-[1.1] mb-8 text-gray-900">
+                    Sana tu <span class="italic text-gold">Corazón</span>, Eleva tu Energía
+                </h1>
+                <p class="text-lg text-gray-500 font-light leading-relaxed mb-10 max-w-md">
+                    Descubre la sanación profunda a través del amor propio y la consciencia espiritual. Un viaje hacia tu paz interior.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#servicios" class="px-10 py-5 bg-gray-900 text-white rounded-full text-[10px] uppercase tracking-widest hover:bg-gold transition-all shadow-xl hover:scale-105 active:scale-95">Iniciar mi Viaje</a>
+                    <a href="#tienda" class="px-10 py-5 border border-quartz text-gray-800 rounded-full text-[10px] uppercase tracking-widest hover:bg-white transition-all">Explorar Tienda</a>
+                </div>
+            </div>
+            <div class="relative group">
+                <div class="aspect-[4/5] rounded-[60px] overflow-hidden card-shadow border-8 border-white transform rotate-2 group-hover:rotate-0 transition-transform duration-700">
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover" alt="Zen Meditación">
+                </div>
+                <div class="absolute -bottom-8 -left-8 bg-white p-8 rounded-3xl shadow-2xl hidden md:block animate-float">
+                    <p class="font-serif italic text-2xl text-gray-700">"El alma brilla cuando el amor propio sana."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section id="sobre" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=500" class="rounded-3xl shadow-lg mt-12 hover:-translate-y-4 transition-transform duration-500" alt="Cristales">
+                        <img src="https://images.unsplash.com/photo-1528319725582-ddc0b6aabc5e?w=500" class="rounded-3xl shadow-lg hover:translate-y-4 transition-transform duration-500" alt="Energía">
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-gold uppercase tracking-[0.4em] text-xs font-bold mb-4 italic">Nuestra Esencia</h2>
+                    <h3 class="text-4xl md:text-5xl font-serif mb-8 text-gray-900 leading-tight">Un Espacio Sagrado para <br> Reconectar Contigo</h3>
+                    <p class="text-gray-500 font-light leading-relaxed mb-8">
+                        SoulRise nace bajo la premisa de que <b>amarse es el acto más revolucionario</b>. Aquí no solo sanamos la energía, sino que reescribimos la relación con nuestro ser más profundo.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-quartz/20 rounded-full flex items-center justify-center shrink-0">
+                                <i data-lucide="heart" class="text-gold w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl mb-1">Amor Consciente</h4>
+                                <p class="text-xs text-gray-400 font-light">Transformamos bloqueos en puentes de luz.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 bg-lilac/20 rounded-full flex items-center justify-center shrink-0">
+                                <i data-lucide="moon" class="text-gold w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl mb-1">Paz Ritual</h4>
+                                <p class="text-xs text-gray-400 font-light">Prácticas diarias para mantener tu vibración alta.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios de Sanación -->
+    <section id="servicios" class="py-32 bg-quartz/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+            <h2 class="text-gold uppercase tracking-[0.4em] text-xs font-bold mb-4">Modalidades</h2>
+            <h3 class="text-4xl md:text-5xl font-serif mb-20 text-gray-900 italic">Terapias para el Alma</h3>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Sesión 1 -->
+                <div class="bg-white p-10 rounded-[40px] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
+                    <div class="w-16 h-16 bg-quartz/20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-gold/20 transition-colors">
+                        <i data-lucide="sun" class="text-gold w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-serif mb-4">Reiki Energético</h4>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Armonización de chakras y limpieza de aura profunda.</p>
+                </div>
+                <!-- Sesión 2 -->
+                <div class="bg-white p-10 rounded-[40px] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
+                    <div class="w-16 h-16 bg-lilac/20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-gold/20 transition-colors">
+                        <i data-lucide="flower" class="text-gold w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-serif mb-4">Cristaloterapia</h4>
+                    <h4 class="hidden">Sanación</h4>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Uso de gemas sagradas para canalizar bienestar físico y mental.</p>
+                </div>
+                <!-- Sesión 3 -->
+                <div class="bg-white p-10 rounded-[40px] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
+                    <div class="w-16 h-16 bg-sage/20 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-gold/20 transition-colors">
+                        <i data-lucide="wind" class="text-gold w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-serif mb-4">Meditación</h4>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Viajes guiados hacia el interior para reducir el estrés.</p>
+                </div>
+                <!-- Sesión 4 -->
+                <div class="bg-white p-10 rounded-[40px] card-shadow border border-gray-50 hover:-translate-y-2 transition-all group">
+                    <div class="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:bg-gold/20 transition-colors">
+                        <i data-lucide="users" class="text-gold w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-serif mb-4">Guía Espiritual</h4>
+                    <p class="text-gray-400 text-sm font-light leading-relaxed">Acompañamiento personal en tu proceso de despertar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tienda -->
+    <section id="tienda" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+                <div>
+                    <h2 class="text-gold uppercase tracking-[0.4em] text-xs font-bold mb-4">Botica Sagrada</h2>
+                    <h3 class="text-4xl md:text-5xl font-serif text-gray-900">Objetos de Poder</h3>
+                </div>
+                <button class="text-xs uppercase tracking-widest font-bold border-b border-gold pb-1 hover:text-gold transition-colors">Ver colección</button>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Producto 1 -->
+                <div class="group">
+                    <div class="relative aspect-[3/4] rounded-[40px] overflow-hidden mb-6 shadow-md border border-gray-50">
+                        <img src="https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?w=500" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt="Kit de Cuarzos">
+                        <button onclick="addToCart()" class="absolute bottom-6 right-6 bg-white p-4 rounded-full shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all active:scale-90">
+                            <i data-lucide="plus" class="w-5 h-5 text-gray-800"></i>
+                        </button>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-xl font-serif mb-1 group-hover:text-gold transition-colors">Set Intuición</h4>
+                        <p class="text-gray-400 text-xs font-light tracking-widest">$45.00</p>
+                    </div>
+                </div>
+                <!-- Producto 2 -->
+                <div class="group">
+                    <div class="relative aspect-[3/4] rounded-[40px] overflow-hidden mb-6 shadow-md border border-gray-50">
+                        <img src="https://images.unsplash.com/photo-1603006375271-7f3b904bb108?w=500" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt="Vela Ritual">
+                        <button onclick="addToCart()" class="absolute bottom-6 right-6 bg-white p-4 rounded-full shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all active:scale-90">
+                            <i data-lucide="plus" class="w-5 h-5 text-gray-800"></i>
+                        </button>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-xl font-serif mb-1 group-hover:text-gold transition-colors">Vela de Intención</h4>
+                        <p class="text-gray-400 text-xs font-light tracking-widest">$28.00</p>
+                    </div>
+                </div>
+                <!-- Producto 3 -->
+                <div class="group">
+                    <div class="relative aspect-[3/4] rounded-[40px] overflow-hidden mb-6 shadow-md border border-gray-50">
+                        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt="Aceite Esencial">
+                        <button onclick="addToCart()" class="absolute bottom-6 right-6 bg-white p-4 rounded-full shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all active:scale-90">
+                            <i data-lucide="plus" class="w-5 h-5 text-gray-800"></i>
+                        </button>
+                    </div>
+                    <div class="text-center">
+                        <h4 class="text-xl font-serif mb-1 group-hover:text-gold transition-colors">Oleo de Aura</h4>
+                        <p class="text-gray-400 text-xs font-light tracking-widest">$32.00</p>
+                    </div>
+                </div>
+                <!-- Producto 4 -->
+                <div class="group">
+                    <div class="relative aspect-[3/4] rounded-[40px] overflow-hidden mb-6 shadow-md border border-gray-50">
+                        <img src="https://images.unsplash.com/photo-1602166669083-d34e60803c00?w=500" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" alt="Salvia">
+                        <button onclick="addToCart()" class="absolute bottom-6 right-6 bg-white p-4 rounded-full shadow-xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all active:scale-90">
+                            <i
